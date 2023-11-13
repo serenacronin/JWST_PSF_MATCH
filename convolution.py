@@ -65,6 +65,10 @@ def resample(infile, outfile, target_pixscale, infile_ext=False):
 
 def resample_and_match_to(match_to_file, infile, outfile, delt1, delt2):
 
+    """
+    Same as resample, but this time with a spatial shift in pixels
+    to better match all filters.
+    """
 
     match_to_hdu = fits.open(match_to_file)
     match_to_data = match_to_hdu[0].data
