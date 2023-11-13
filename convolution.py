@@ -90,10 +90,7 @@ def resample_and_match_to(match_to_file, infile, outfile, delt1, delt2):
     img_reproj, _ = reproject_interp(infile_hdu[1], infile_hdr, 
                                       shape_out=(match_to_data.shape[0], match_to_data.shape[1]))
     
-    # conserve surface brightness
-    print(new_cdelt1**2 / old_cdelt1**2)
-    img_reproj_conserved = img_reproj * (new_cdelt1**2 / old_cdelt1**2) 
-    fits.writeto(outfile, img_reproj_conserved, infile_hdr, overwrite=True)
+    fits.writeto(outfile, img_reproj, infile_hdr, overwrite=True)
 
     return
 
